@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/comment")
 public class CommentController {
 
-    @Autowired
-    private CommentService commentService;
+
 
 }
