@@ -14,5 +14,4 @@ public class MemberDTO {
     private String memberName; //회원이름
     private int memberAge; //회원나이
     private String memberPhone; //회원폰번호
-
 }

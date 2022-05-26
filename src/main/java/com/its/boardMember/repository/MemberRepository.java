@@ -14,4 +14,10 @@ public class MemberRepository {
     public int save(MemberDTO memberDTO) {
         return sql.insert("Member.save",memberDTO);
     }
+
+    public MemberDTO login(MemberDTO memberDTO) {
+
+        return sql.selectOne("Member.login",memberDTO);
+    } // selectOne 은 select 를 한개만 선택한다는 의미이다?!!
+
 }

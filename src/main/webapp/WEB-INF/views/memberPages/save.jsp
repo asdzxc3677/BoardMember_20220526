@@ -13,13 +13,13 @@
 <body>
 <h2>회원가입 페이지</h2>
 <div class="container">
-    <form action="/save" method="post">
+    <form action="/member/save" method="post">
     계정: <input type="text" onblur="duplicateCheck()" id="memberId" name="memberId" placeholder="아이디"><br>
     <span id="dup-check-result"></span>
-    비번: <input type="text" name="memberPassword" placeholder="비번"><br>
-    이름: <input type="text" name="memberName" placeholder="이름"><br>
-    나이: <input type="text" name="memberAge" placeholder="나이"><br>
-    폰번호: <input type="text" name="memberPhone" placeholder="폰번호">
+    비번: <input type="text" id="memberPassword" name="memberPassword" placeholder="비번"><br>
+    이름: <input type="text" id="memberName" name="memberName" placeholder="이름"><br>
+    나이: <input type="text" id="memberAge" name="memberAge" placeholder="나이"><br>
+    폰번호: <input type="text" id="memberPhone" name="memberPhone" placeholder="폰번호">
         <input type="submit" value="회원가입">
     </form>
 </div>
