@@ -9,8 +9,12 @@
 <html>
 <head>
     <title>Title</title>
+
 </head>
 <body>
+<div class="container"></div>
+<h2>조회결과 datail.jsp</h2>
+조회결과: ${member}
 
 </body>
 </html>

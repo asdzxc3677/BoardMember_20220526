@@ -5,6 +5,8 @@ import com.its.boardMember.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MemberService {
 
@@ -25,4 +27,23 @@ public class MemberService {
         MemberDTO loginMember = memberRepository.login(memberDTO);
         return loginMember;
     }
+
+    public List<MemberDTO> findAll() {
+        return memberRepository.findAll();
+    }
+
+    public MemberDTO findById(Long id) {
+        return memberRepository.findById(id);
+    }
+
+    public boolean delete(Long id) {
+        int deleteResult = memberRepository.delete(id);
+        if(deleteResult > 0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
 }

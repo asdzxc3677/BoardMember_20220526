@@ -5,12 +5,10 @@ import com.its.boardMember.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/member")
@@ -56,9 +54,32 @@ public class MemberController {
         }
     }
 
+    @GetMapping("findAll") //회원정보
+    public String findAll(Model model){
+        List<MemberDTO> memberDTOList = memberService.findAll();
+        model.addAttribute("memberList",memberDTOList);
+        return "memberPages/list";
+    }
 
+    @GetMapping("/detail-ajax") // ajax로 처리된 상세조회
+    public @ResponseBody MemberDTO findByIdAjax(@RequestParam("id") Long id){
+        System.out.println("id = " + id);
+        MemberDTO memberDTO = memberService.findById(id);
+        return memberDTO;
+    }
 
-
-
+    @GetMapping("/delete") // 회원삭제
+    public String delete(@RequestParam("id") Long id) {
+        System.out.println("id = " + id);
+        boolean deleteResult = memberService.delete(id);
+        if (deleteResult) {
+            return "redirect:/member/findAll";
+        } else {
+            return "delete-fail";
+        }
+    }
 
 }
+
+
+

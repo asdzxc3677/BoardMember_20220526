@@ -13,4 +13,18 @@
         select * from member_tab where memberId=#{memberId} and memberPassword=#{memberPassword}
     </select>
 
+    <select id="findAll" resultType="member">
+        select * from member_tab
+    </select>
+
+    <select id="findById" parameterType="Long" resultType="member">
+        select * from member_tab where id=#{id}
+    </select>
+
+    <delete id="delete" parameterType="Long">
+        delete from member_tab where id=#{id}
+    </delete>
+
+
+
 </mapper>
