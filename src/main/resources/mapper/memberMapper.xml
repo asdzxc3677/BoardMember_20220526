@@ -25,6 +25,10 @@
         delete from member_tab where id=#{id}
     </delete>
 
+    <update id="update" parameterType="member">
+        update member_table set memberPhone=#{memberPhone} where id=#{id}
+    </update>
+
 
 
 </mapper>

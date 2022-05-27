@@ -84,6 +84,25 @@ public class MemberController {
 //        return "redirect:/member/findAll";
 //    } 삭제처리할때 간단 명료한 문법을 사용해도 괜찮다.
 
+    @GetMapping("/update-form") //회원수정을 위해 회원정보를 받음
+    public String updateForm(HttpSession session, Model model){
+        Long updateId = (Long) session.getAttribute("id");
+        System.out.println("updateId=" + updateId);
+        MemberDTO memberDTO = memberService.findById(updateId);
+        model.addAttribute("updateMember",memberDTO);
+        return "memberPages/update";
+    }
+
+    @PostMapping("/update") //회원수정 처리
+    public String update(@ModelAttribute MemberDTO memberDTO){
+        boolean updateResult = memberService.update(memberDTO);
+        if (updateResult){
+            return "redirect:/member/detail?id=" + memberDTO.getId();
+        }else {
+            return "memberPages/update-fail";
+        }
+    }
+
 
 
 
