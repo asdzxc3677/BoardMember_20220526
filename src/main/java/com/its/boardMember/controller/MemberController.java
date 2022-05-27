@@ -78,6 +78,15 @@ public class MemberController {
             return "delete-fail";
         }
     }
+//    @GetMapping("/delete")
+//    public String delete(@RequestParam("id") Long id) {
+//        boardService.delete(id);
+//        return "redirect:/member/findAll";
+//    } 삭제처리할때 간단 명료한 문법을 사용해도 괜찮다.
+
+
+
+
 
 }
 
