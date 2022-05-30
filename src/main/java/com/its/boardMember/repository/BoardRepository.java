@@ -26,4 +26,12 @@ public class BoardRepository {
     public List<BoardDTO> pagingList(Map<String, Integer> pagingParam) {
         return sql.selectList("Board.pagingList",pagingParam);
     }
+
+    public void updateHits(Long id) {
+        sql.update("Board.updateHits", id);
+    }
+
+    public BoardDTO findById(Long id) {
+        return sql.selectOne("Board.findById", id);
+    }
 }

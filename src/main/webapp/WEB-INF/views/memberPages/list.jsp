@@ -15,6 +15,7 @@
 </head>
 <body>
     <h2>회원조회 list.jsp</h2>
+    <a href="/">index 시작페이지로 이동</a><br>
     <div class="container">
         <table class="table">
             <tr>
