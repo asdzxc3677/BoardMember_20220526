@@ -53,6 +53,19 @@ public class BoardController {
         model.addAttribute("commentList",commentDTOList);
         return "boardPages/detail";
     }
+
+    @GetMapping("/passwordCheck") //비밀번호 체크 페이지
+    public String passwordCheck(@RequestParam("id") Long id, Model model){
+        BoardDTO boardDTO = boardService.findById(id);
+        model.addAttribute("board",boardDTO);
+        return "boardPages/passwordCheck";
+    }
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("id") Long id){
+        boardService.delete(id);
+        return "redirect:/board/findAll";
+    }
     
 
 
