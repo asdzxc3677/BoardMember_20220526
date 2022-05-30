@@ -103,6 +103,23 @@ public class MemberController {
         }
     }
 
+    @PostMapping("/duplicate-check") //아이디 중복체크
+    public @ResponseBody String duplicateCheck(@RequestParam("memberId") String memberId){
+        System.out.println("memberId = " + memberId);
+        String checkResult = memberService.duplicateCheck(memberId);
+        return  checkResult;
+    }
+
+    @GetMapping("logout") // 로그아웃 처리
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "/memberPages/index";
+    }
+
+
+
+
+
 
 
 

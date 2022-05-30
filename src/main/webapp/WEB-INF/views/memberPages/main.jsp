@@ -17,7 +17,7 @@
     세션에 담은 회원아이디: ${sessionScope.loginId}<br>
     세션에 담은 id: ${sessionScope.loginId}<br>
     <a href="/">index로 이동</a><br>
-    <button class="btn btn-primary" onclick="location.href='/update-form'">수정</button>
+    <button class="btn btn-primary" onclick="location.href='member/update-form'">수정</button>
     <button class="bth btn-danger" onclick="updateForm()">수정(함수호출)</button> <br>
     <c:if test="${sessionScope.loginMemberId eq 'admin'}">
         <a href="/findAll">관리자전용 회원목록</a>
@@ -25,7 +25,7 @@
 </body>
 <script>
     const updateForm = () => {
-        location.href ="/update-form";
+        location.href ="/member/update-form";
     }
 </script>
 </html>
