@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+
 </head>
 <body>
     <h2>로그인 페이지</h2>
@@ -16,6 +18,7 @@
         <input type="text" name="memberId" placeholder="아이디">
         <input type="text" name="memberPassword" placeholder="비밀번호">
         <input type="submit" value="로그인">
+
     </form>
 
 </body>

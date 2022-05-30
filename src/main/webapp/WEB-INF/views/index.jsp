@@ -9,11 +9,16 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+
+
 </head>
 <body>
-<h2>시작페이지</h2>
+<h2>회원게시판 시작페이지</h2>
 <a href="/member/save-form">회원 가입 </a> <br>
 <a href="/member/login-form">로그인 하라</a> <br>
 <a href="/member/findAll">신상정보 </a> <br>
+
+
 </body>
 </html>

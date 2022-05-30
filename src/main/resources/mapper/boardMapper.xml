@@ -4,5 +4,22 @@
 
 
 <mapper namespace="Board">
+    <insert id="saveFile" parameterType="board">
+        insert into board_tab
+            (boardWriter, boardPassword, boardTitle,
+                              boardContents, boardCreatedDate, boardFileName)
+        values (#{boardWriter}, #{boardPassword}, #{boardTitle},
+                #{boardContents}, now(), #{boardFileName})
+    </insert>
+
+    <select id="pagingList" parameterType="java.util.HashMap" resultType="board">
+        select * from board_tab order by id desc limit #{start}, #{limit}
+    </select>
+
+
+    <select id="count" resultType="int">
+        select count(id) from board_tab
+    </select>
+
 
 </mapper>

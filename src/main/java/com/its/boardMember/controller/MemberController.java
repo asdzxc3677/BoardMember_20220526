@@ -113,7 +113,7 @@ public class MemberController {
     @GetMapping("logout") // 로그아웃 처리
     public String logout(HttpSession session){
         session.invalidate();
-        return "/memberPages/index";
+        return "index";
     }
 
 
