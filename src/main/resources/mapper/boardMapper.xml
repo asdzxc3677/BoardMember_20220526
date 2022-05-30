@@ -22,11 +22,12 @@
     </select>
 
     <update id="updateHits" parameterType="Long">
-        update board_table set boardHits=boardHits+1 where id=#{id}
+        update board_tab set boardHits=boardHits+1 where id=#{id}
     </update>
 
+
     <select id="findById" parameterType="Long" resultType="board">
-        select * from board_table where id=#{id}
+        select * from board_tab where id=#{id}
     </select>
 
 

@@ -87,6 +87,10 @@
 </body>
 <script>
     $("#comment-write-btn").click(function (){
+        // alert("나 눌렀어?");
+        // 댓글 작성자, 내용을 가져오고
+        // ajax 문법을 활용하여 /comment/save 주소로 post 방식으로 작성자, 내용, 글번호 이렇게
+        // 세개의 값을 보내는 코드를 작성하십시오.
         const cWriter = document.getElementById("commentWriter").value;
         const cContents = $("#commentContents").val();
         const boardId = '${board.id}';
@@ -120,7 +124,7 @@
                 document.getElementById('commentContents').value='';
             },
             error: function () {
-                alert("어디가 틀렸노");
+                alert("어디가 틀렸을까");
             }
         });
     });
