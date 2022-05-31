@@ -33,8 +33,8 @@ public class BoardService {
         boardRepository.saveFile(boardDTO);
     }
 
-    private static final int PAGE_LIMIT = 3; // 한 페이지에 보여줄 글 갯수
-    private static final int BLOCK_LIMIT = 5; // 보여줄 필요 페이지 수
+    private static final int PAGE_LIMIT = 5; // 한 페이지에 보여줄 글 갯수
+    private static final int BLOCK_LIMIT = 7; // 보여줄 필요 페이지 수
 
     public List<BoardDTO> pagingList(int page) {
         int pagingStart = (page-1) * PAGE_LIMIT;
@@ -71,8 +71,20 @@ public class BoardService {
         boardRepository.delete(id);
     }
 
-    public List<BoardDTO> findAll() { //목록처리 추가
+    public List<BoardDTO> findAll() { // 원래 계획에 없던 목록처리 추가됨..!
         return boardRepository.findAll();
+    }
+
+    public void update(BoardDTO boardDTO) {
+        boardRepository.update(boardDTO);
+    }
+
+    public List<BoardDTO> search(String searchType, String q) {
+        Map<String,String> searchParam = new HashMap<>();
+        searchParam.put("type",searchType);
+        searchParam.put("q",q);
+        List<BoardDTO> searchList = boardRepository.search(searchParam);
+        return searchList;
     }
 }
 

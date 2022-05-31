@@ -48,7 +48,7 @@ public class MemberController {
             model.addAttribute("loginMember",loginMember);
             session.setAttribute("loginId",loginMember.getMemberId());
             session.setAttribute("id",loginMember.getId());
-            return "/memberPages/main"; //나중에 main 처리로?
+            return "redirect:/board/paging"; // "redirect: 역할은 /board/paging" <-- 로그인을 했을때 이 주소로 이동시키는 역할이다.
         }else {
             return "memberPages/login";
         }

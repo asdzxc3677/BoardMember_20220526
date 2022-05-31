@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Controller
-@RequestMapping("/board")
+@RequestMapping("/board") // RequestMapping 역할: 컨트룰러의 주소 (인터넷창 주소)
 public class BoardController {
 
     @Autowired
@@ -33,7 +33,7 @@ public class BoardController {
         return "redirect:/board/paging";
     }
 
-    @GetMapping("/findAll") //글목록
+    @GetMapping("/findAll") //글목록(계획에 없던 findAll 추가 됨)
     public String findAll(Model model) {
         List<BoardDTO> boardDTOList = boardService.findAll();
         model.addAttribute("boardList", boardDTOList);
@@ -72,6 +72,27 @@ public class BoardController {
     public String delete(@RequestParam("id") Long id){
         boardService.delete(id);
         return "redirect:/board/findAll";
+    }
+
+    @GetMapping("/update") // 수정화면 요청
+    public String updateForm(@RequestParam("id") Long id, Model model){
+        BoardDTO boardDTO = boardService.findById(id);
+        model.addAttribute("boardUpdate",boardDTO);
+        return "boardPages/update";
+    }
+
+    @PostMapping("/update") // 수정처리
+    public String update(@ModelAttribute BoardDTO boardDTO){
+        boardService.update(boardDTO);
+        return "redirect:/board/detail?id=" + boardDTO.getId(); 
+    }
+
+    @GetMapping("/search")
+    public String search(@RequestParam("searchType") String searchType,
+                         @RequestParam("q") String q, Model model){
+        List<BoardDTO> searchList = boardService.search(searchType, q);
+        model.addAttribute("boardList",searchList);
+        return "boardPages/list";
     }
     
 

@@ -23,6 +23,7 @@
     나이: <input type="text" id="memberAge" name="memberAge" placeholder="나이"><br>
     폰번호: <input type="text" id="memberPhone" name="memberPhone" placeholder="폰번호">
         <input type="submit" value="회원가입">
+
     </form>
 </div>
 </body>

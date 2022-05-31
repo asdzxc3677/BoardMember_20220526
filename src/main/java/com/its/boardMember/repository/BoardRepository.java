@@ -39,7 +39,15 @@ public class BoardRepository {
         sql.delete("Board.delete", id);
     }
 
-    public List<BoardDTO> findAll() { //목록처리 추가됨
+    public List<BoardDTO> findAll() { //원래 계획에 없던 목록처리 추가됨
         return sql.selectList("Board.findAll");
+    }
+
+    public void update(BoardDTO boardDTO) {
+        sql.update("Board.update",boardDTO);
+    }
+
+    public List<BoardDTO> search(Map<String, String> searchParam) {
+        return sql.selectList("Board.search",searchParam);
     }
 }
