@@ -34,6 +34,10 @@
         delete from board_tab where id=#{id}
     </delete>
 
+    <select id="findAll" resultType="board">
+        select * from board_table order by id desc
+    </select>
+
 
 
 </mapper>

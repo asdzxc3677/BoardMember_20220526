@@ -24,7 +24,7 @@
             <input class="form-control mb-2" type="text" name="boardPassword" placeholder="비번"><br>
             <textarea class="form-control mb-2" name="boardContents" rows="5" cols="10" placeholder="내용"></textarea>
             첨부파일:<input type="file" name="boardFile">
-            <input class="btn btn-primary" type="submit" name="boardContents" placeholder="글작성"><br>
+            <input class="btn btn-primary" type="submit" placeholder="글작성"><br>
         </form>
     </div>
 </div>

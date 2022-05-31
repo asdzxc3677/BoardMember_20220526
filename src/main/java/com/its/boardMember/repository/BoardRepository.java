@@ -38,4 +38,8 @@ public class BoardRepository {
     public void delete(Long id) {
         sql.delete("Board.delete", id);
     }
+
+    public List<BoardDTO> findAll() { //목록처리 추가됨
+        return sql.selectList("Board.findAll");
+    }
 }

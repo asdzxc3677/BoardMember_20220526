@@ -33,6 +33,13 @@ public class BoardController {
         return "redirect:/board/paging";
     }
 
+    @GetMapping("/findAll") //글목록
+    public String findAll(Model model) {
+        List<BoardDTO> boardDTOList = boardService.findAll();
+        model.addAttribute("boardList", boardDTOList);
+        return "boardPages/list";
+    }
+
     @GetMapping("/paging")  //페이징 처리
     public String paging(@RequestParam(value="page", required=false, defaultValue="1") int page, Model model) {
         List<BoardDTO> boardList = boardService.pagingList(page);
@@ -61,7 +68,7 @@ public class BoardController {
         return "boardPages/passwordCheck";
     }
 
-    @GetMapping("/delete")
+    @GetMapping("/delete") //삭제처리
     public String delete(@RequestParam("id") Long id){
         boardService.delete(id);
         return "redirect:/board/findAll";

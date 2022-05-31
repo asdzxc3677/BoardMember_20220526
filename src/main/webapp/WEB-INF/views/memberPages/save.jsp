@@ -10,6 +10,7 @@
 <head>
     <title>Title</title>
     <script src="/resources/js/jquery.js"></script>
+
 </head>
 <body>
 <h2>회원가입 페이지</h2>

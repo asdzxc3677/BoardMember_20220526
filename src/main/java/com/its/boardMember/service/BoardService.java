@@ -70,5 +70,9 @@ public class BoardService {
     public void delete(Long id) {
         boardRepository.delete(id);
     }
+
+    public List<BoardDTO> findAll() { //목록처리 추가
+        return boardRepository.findAll();
+    }
 }
 
