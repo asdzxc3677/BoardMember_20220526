@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Controller
-@RequestMapping("/board") // RequestMapping 역할: 컨트룰러의 주소 (인터넷창 주소)
+@RequestMapping("/board") // RequestMapping 역할: http 인터넷창 주소를 받아주는 역할
 public class BoardController {
 
     @Autowired
@@ -47,6 +47,7 @@ public class BoardController {
         model.addAttribute("boardList", boardList);
         model.addAttribute("paging", paging);
         return "boardPages/pagingList";
+//        return "redirect:/member/login-form";
     }
 
     @GetMapping("/detail") //상세조회
