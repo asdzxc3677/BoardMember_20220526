@@ -4,10 +4,7 @@ import com.its.boardMember.dto.CommentDTO;
 import com.its.boardMember.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +20,14 @@ public class CommentController {
     public @ResponseBody List<CommentDTO> save(@ModelAttribute CommentDTO commentDTO){
         commentService.save(commentDTO);
         List<CommentDTO> commentDTOList = commentService.findAll(commentDTO.getBoardId()); //2.
+        return commentDTOList;
+    }
+
+    @GetMapping("/delete")
+    public @ResponseBody List<CommentDTO> delete(@RequestParam("id") Long id,
+                                                 @RequestParam("boardId") Long boardId) {
+        commentService.delete(id);
+        List<CommentDTO> commentDTOList = commentService.findAll(boardId);
         return commentDTOList;
     }
 }

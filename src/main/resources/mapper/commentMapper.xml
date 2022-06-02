@@ -12,4 +12,7 @@
         select * from comment_tab where boardId=#{boardId} order by id desc
     </select>
 
+    <delete id="delete" parameterType="Long">
+        delete from comment_tab where id=#{id}
+    </delete>
 </mapper>

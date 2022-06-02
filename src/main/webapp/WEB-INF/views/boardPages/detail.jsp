@@ -81,7 +81,7 @@
                     <td>${comment.commentWriter}</td>
                     <td>${comment.commentContents}</td>
                     <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${comment.commentCreatedDate}"></fmt:formatDate></td>
-                    <td><button onclick="boardDelete()">삭제</button></td>
+                    <td><button onclick="commentDelete('${comment.id}')">삭제</button></td>
                 </tr>
             </c:forEach>
         </table>
@@ -122,12 +122,11 @@
                     output += "<td>"+result[i].commentWriter+"</td>";
                     output += "<td>"+result[i].commentContents+"</td>";
                     output += "<td>"+moment(result[i].commentCreatedDate).format("YYYY-MM-DD HH:mm:ss")+"</td>";
-                    output += "<td><button onclick='boardDelete()'>삭제</button></td>";
+                    output += "<td><button onclick='commentDelete()'>삭제</button></td>";
                     output += "</tr>";
                 }
                 output += "</table>";
                 document.getElementById('comment-list').innerHTML = output;
-                document.getElementById('commentWriter').value='';
                 document.getElementById('commentContents').value='';
             },
             error: function () {
@@ -152,9 +151,38 @@
     const findAll = () => {
         location.href = "/board/findAll";
     }
-    const commentDelete = () => {
-        location.href = "/comment/delete";
-        $.ajax()
+    const commentDelete = (id) => {
+        const boardId = '${board.id}';
+        $.ajax({
+            type: "get",
+            url: "/comment/delete",
+            data: {"id": id, "boardId": boardId},
+            dataType: "json",
+            success: function (result) {
+                console.log(result);
+                let output = "<table class='table'>";
+                output += "<tr><th>댓글번호</th>";
+                output += "<th>작성자</th>";
+                output += "<th>내용</th>";
+                output += "<th>작성시간</th>";
+                output += "<th>댓글삭제</th></tr>";
+                for(let i in result){
+                    output += "<tr>";
+                    output += "<td>"+result[i].id+"</td>";
+                    output += "<td>"+result[i].commentWriter+"</td>";
+                    output += "<td>"+result[i].commentContents+"</td>";
+                    output += "<td>"+moment(result[i].commentCreatedDate).format("YYYY-MM-DD HH:mm:ss")+"</td>";
+                    output += "<td><button onclick='commentDelete(" + result[i].id + "})'>삭제</button></td>";
+                    output += "</tr>";
+                }
+                output += "</table>";
+                document.getElementById('comment-list').innerHTML = output;
+                document.getElementById('commentContents').value='';
+            },
+            error: function () {
+                alert("어디가 틀렸을까");
+            }
+        });
     }
 </script>
 </html>
