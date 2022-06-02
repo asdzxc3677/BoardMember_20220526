@@ -19,7 +19,7 @@
     이름: <input type = "text" name="memberName" value="${updateMember.memberName}" > <br>
     나이: <input type = "text" name="memberAge" value="${updateMember.memberAge}" > <br>
     전화번호: <input type = "text" name="memberPhone" value="${updateMember.memberPhone}" >
-    <input class="btn btn-primary" type="button" onclick="update()" value="정보수정">
+    <input class="btn btn-primary" type="button" onclick="memberUpdate()" value="정보수정">
 
 </form>
 </body>

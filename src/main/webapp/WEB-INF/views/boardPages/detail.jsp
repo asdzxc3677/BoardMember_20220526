@@ -22,6 +22,7 @@
 
 </head>
 <body>
+<jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
 <div class="container">
     <h2>상세조회 detail.jsp</h2>
     <table class="table">
@@ -50,10 +51,11 @@
         </tr>
     </table>
 </div>
-<div class="container mt-5">
+<div class="container mt-5"> <%-- 댓글작성 하는기능  --%>
     <div id="comment-write" class="input-group mb-3">
         <div class="form-floating">
-            <input type="text" id="commentWriter" class="form-control" placeholder="작성자">
+            <input type="text" id="commentWriter" class="form-control"
+                   value="${sessionScope.loginId}" readonly> <%-- 로그인한 값을 작성자에게 자동입력!  --%>
             <label for="commentWriter">작성자</label>
         </div>
         <div class="form-floating">
@@ -61,7 +63,8 @@
             <label for="commentContents">내용</label>
         </div>
         <button id="comment-write-btn" class="btn btn-primary">댓글작성</button>
-    </div>
+
+    </div> <%-- 여기까지  --%>
 
     <div id="comment-list">
         <table class="table">
@@ -70,6 +73,7 @@
                 <th>작성자</th>
                 <th>내용</th>
                 <th>작성시간</th>
+                <th>댓글삭제</th>
             </tr>
             <c:forEach items="${commentList}" var="comment">
                 <tr>
@@ -77,6 +81,7 @@
                     <td>${comment.commentWriter}</td>
                     <td>${comment.commentContents}</td>
                     <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${comment.commentCreatedDate}"></fmt:formatDate></td>
+                    <td><button onclick="boardDelete()">삭제</button></td>
                 </tr>
             </c:forEach>
         </table>
@@ -109,13 +114,15 @@
                 output += "<tr><th>댓글번호</th>";
                 output += "<th>작성자</th>";
                 output += "<th>내용</th>";
-                output += "<th>작성시간</th></tr>";
+                output += "<th>작성시간</th>";
+                output += "<th>댓글삭제</th></tr>";
                 for(let i in result){
                     output += "<tr>";
                     output += "<td>"+result[i].id+"</td>";
                     output += "<td>"+result[i].commentWriter+"</td>";
                     output += "<td>"+result[i].commentContents+"</td>";
                     output += "<td>"+moment(result[i].commentCreatedDate).format("YYYY-MM-DD HH:mm:ss")+"</td>";
+                    output += "<td><button onclick='boardDelete()'>삭제</button></td>";
                     output += "</tr>";
                 }
                 output += "</table>";
@@ -144,6 +151,10 @@
     }
     const findAll = () => {
         location.href = "/board/findAll";
+    }
+    const commentDelete = () => {
+        location.href = "/comment/delete";
+        $.ajax()
     }
 </script>
 </html>

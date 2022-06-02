@@ -97,7 +97,7 @@ public class MemberController {
     public String update(@ModelAttribute MemberDTO memberDTO){
         boolean updateResult = memberService.update(memberDTO);
         if (updateResult){
-            return "redirect:/member/detail?id=" + memberDTO.getId();
+            return "redirect:/member/findAll";
         }else {
             return "memberPages/update-fail";
         }
