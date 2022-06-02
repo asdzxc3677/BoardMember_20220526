@@ -45,8 +45,14 @@
             <td>${board.boardHits} </td>
             <img src="${pageContext.request.contextPath}/upload/${board.boardFileName}"
                  alt="" height="100" width="100">
+            <c:if test="${sessionScope.loginId =='admin'}">
             <td><button onclick="boardUpdate()">수정</button></td>
             <td><button onclick="boardDelete()">삭제</button></td>
+            </c:if>
+            <c:if test="${board.boardWriter == sessionScope.loginId}">
+                <td><button onclick="boardUpdate()">수정</button></td>
+                <td><button onclick="boardDelete()">삭제</button></td>
+            </c:if>
             <td><button onclick="paging()">페이징목록</button></td>
         </tr>
     </table>
@@ -81,7 +87,14 @@
                     <td>${comment.commentWriter}</td>
                     <td>${comment.commentContents}</td>
                     <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${comment.commentCreatedDate}"></fmt:formatDate></td>
-                    <td><button onclick="commentDelete('${comment.id}')">삭제</button></td>
+                    <c:if test="${sessionScope.loginId =='admin'}">
+                        <td><button onclick="commentDelete('${comment.id}')">삭제</button></td>
+                    </c:if>
+
+                    <c:if test="${comment.commentWriter == sessionScope.loginId}">
+                        <td><button onclick="commentDelete('${comment.id}')">삭제</button></td>
+                    </c:if>
+
                 </tr>
             </c:forEach>
         </table>

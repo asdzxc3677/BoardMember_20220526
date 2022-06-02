@@ -28,8 +28,13 @@
 
             </ul>
             <div class="text-end">
+                <c:if test="${sessionScope.loginId ==null}">
                 <button type="button" class="btn btn-outline-light me-2" onclick="login()">Login</button>
+                </c:if>
                 <button type="button" class="btn btn-warning" onclick="logout()">로그아웃</button>
+                <c:if test="${sessionScope.loginId == 'admin'}">
+                <button type="button" class="btn btn-warning" onclick="memberList()">회원신상정보</button>
+                </c:if>
             </div>
         </div>
     </div>
@@ -41,7 +46,9 @@ const login = () => {
 }
 const logout = () => {
     location.href="/member/logout";
-
+}
+const memberList = () =>{
+    location.href="/member/findAll";
 }
 </script>
 </html>
