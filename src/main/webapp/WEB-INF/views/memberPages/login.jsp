@@ -13,6 +13,7 @@
 
 </head>
 <body>
+<jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
     <h2>로그인 페이지</h2>
     <form action="/member/login" method="post">
         <input type="text" name="memberId" placeholder="아이디">

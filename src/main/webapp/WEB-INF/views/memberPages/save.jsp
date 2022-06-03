@@ -10,9 +10,11 @@
 <head>
     <title>Title</title>
     <script src="/resources/js/jquery.js"></script>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 
 </head>
 <body>
+<jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
 <h2>회원가입 페이지</h2>
 <div class="container">
     <form action="/member/save" method="post">
@@ -21,7 +23,7 @@
     비번: <input type="text" id="memberPassword" name="memberPassword" placeholder="비번"><br>
     이름: <input type="text" id="memberName" name="memberName" placeholder="이름"><br>
     나이: <input type="text" id="memberAge" name="memberAge" placeholder="나이"><br>
-    폰번호: <input type="text" id="memberPhone" name="memberPhone" placeholder="폰번호">
+    폰번호: <input type="text" id="memberPhone" name="memberPhone" placeholder="폰번호"> <br>
         <input type="submit" value="회원가입">
 
     </form>
