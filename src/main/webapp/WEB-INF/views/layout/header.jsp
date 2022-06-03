@@ -20,7 +20,7 @@
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
                 <li><a href="/board/paging" class="nav-link px-2 text-white">글목록</a></li>
-                <c:if test="${sessionScope.loginId !=null }">
+                <c:if test="${sessionScope.loginId !=null }">   <%-- 사용용도: 로그인했을때 등록되는 값 로그아웃 하지 않는한 값은 변하지 않는다.--%>
                 <li><a href="/board/saveFile" class="nav-link px-2 text-white">글쓰기</a></li>
                 <li><a href="/member/update-form" class="nav-link px-2 text-white">회원수정</a></li>
                 </c:if> <%-- <c:if></c:if> 써주면 2줄 라인의 기능을 묶을수 있다.   --%>
@@ -32,7 +32,7 @@
                 <button type="button" class="btn btn-outline-light me-2" onclick="login()">Login</button>
                 </c:if>
                 <button type="button" class="btn btn-warning" onclick="logout()">로그아웃</button>
-                <c:if test="${sessionScope.loginId == 'admin'}">
+                <c:if test="${sessionScope.loginId == 'admin'}">  <%-- 내가 적은 아이디와 같나(관리자)  --%>
                 <button type="button" class="btn btn-warning" onclick="memberList()">회원신상정보</button>
                 </c:if>
             </div>

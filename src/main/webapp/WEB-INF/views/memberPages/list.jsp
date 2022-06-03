@@ -10,10 +10,11 @@
 <html>
 <head>
     <title>Title</title>
-
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
     <script src="/resources/js/jquery.js"></script>
 </head>
 <body>
+<jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
     <h2>회원조회 list.jsp</h2>
     <a href="/">index 시작페이지로 이동</a><br>
     <div class="container">
@@ -60,8 +61,8 @@
             success: function (result) {
                 let output = "<table class='table'>";
                 output += "<tr>" +
-                    "<th>id</th> <th>memberId</th> <th>memberPassword</th> <th>memberName</th>" +
-                    "<th>memberAge</th> <th>memberPhone</th> " +
+                    "<th>회원번호</th> <th>아이디</th> <th>비번</th> <th>이름</th>" +
+                    "<th>나이</th> <th>폰번호</th> " +
                     "</tr>";
                 output += "<tr>";
                 output += "<td>" + result.id                  + "</td>";

@@ -55,7 +55,7 @@ public class MemberService {
         }
     }
 
-    public String duplicateCheck(String memberId) {
+    public String duplicateCheck(String memberId) { //아이디 중복체크
         String checkResult = memberRepository.duplicateCheck(memberId);
         if(checkResult == null){
             return "ok";

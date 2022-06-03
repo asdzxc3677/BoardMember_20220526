@@ -27,7 +27,7 @@
     </form>
 </div>
 </body>
-<script>
+<script> <%-- 아이디중복체크 --%>
     const duplicateCheck = () => {
         const memberId = document.getElementById("memberId").value;
         const checkResult  = document.getElementById("dup-check-result");
@@ -44,7 +44,6 @@
                     checkResult.innerHTML = "이미사용한 아이디 입니다."
                     checkResult.style.color = "red";
                 }
-                alert("ajax 성공");
             },
             error: function (){
                 alert("오타체크");

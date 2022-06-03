@@ -18,7 +18,6 @@
         <input type="text" name="memberId" placeholder="아이디">
         <input type="text" name="memberPassword" placeholder="비밀번호">
         <input type="submit" value="로그인">
-
     </form>
 
 </body>

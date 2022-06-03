@@ -50,7 +50,7 @@ public class BoardController {
 //        return "redirect:/member/login-form";
     }
 
-    @GetMapping("/detail") //상세조회
+    @GetMapping("/detail") //상세조회 @RequestParam 의미: 객체가 아닌 하나의 파라미터를 보낸다.
     public String findById(@RequestParam("id") Long id, Model model,
                            @RequestParam(value = "page",required = false,defaultValue = "1")int page){
         BoardDTO boardDTO = boardService.findById(id);
@@ -58,7 +58,7 @@ public class BoardController {
         model.addAttribute("page",page);
         //댓글목록
         List<CommentDTO> commentDTOList = commentService.findAll(id);
-        model.addAttribute("commentList",commentDTOList);
+        model.addAttribute("commentList",commentDTOList); // 모델값을 jsp파일로 보내면 거기서만 사용가능
         return "boardPages/detail";
     }
 

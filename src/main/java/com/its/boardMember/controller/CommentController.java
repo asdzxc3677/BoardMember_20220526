@@ -23,7 +23,7 @@ public class CommentController {
         return commentDTOList;
     }
 
-    @GetMapping("/delete")
+    @GetMapping("/delete") //댓글삭제
     public @ResponseBody List<CommentDTO> delete(@RequestParam("id") Long id,
                                                  @RequestParam("boardId") Long boardId) {
         commentService.delete(id);
