@@ -54,6 +54,7 @@ public class MemberController {
         }
     }
 
+
     @GetMapping("findAll") //회원정보 Model 역할: 리턴한 정보를 리턴할 페이지로 넘길수 있다.
     public String findAll(Model model){
         List<MemberDTO> memberDTOList = memberService.findAll();
@@ -61,12 +62,23 @@ public class MemberController {
         return "memberPages/list";
     }
 
+
     @GetMapping("/detail-ajax") // ajax로 처리된 상세조회
     public @ResponseBody MemberDTO findByIdAjax(@RequestParam("id") Long id){
         System.out.println("id = " + id);
         MemberDTO memberDTO = memberService.findById(id);
         return memberDTO;
     }
+
+    @GetMapping("/detail") // 개인회원정보 추가
+    public String detail(HttpSession session, Model model) {
+        Long id = (Long) session.getAttribute("id");
+        MemberDTO memberDTO = memberService.findById(id);
+        model.addAttribute("member", memberDTO);
+        return "memberPages/detail";
+    }
+
+
 
     @GetMapping("/delete") // 회원삭제
     public String delete(@RequestParam("id") Long id) {
@@ -97,7 +109,7 @@ public class MemberController {
     public String update(@ModelAttribute MemberDTO memberDTO){
         boolean updateResult = memberService.update(memberDTO);
         if (updateResult){
-            return "redirect:/member/findAll";
+            return "redirect:/member/detail"; // 개인회원이 수정처리했을때 개인 목록만 보이게 처리로 수정함
         }else {
             return "memberPages/update-fail";
         }
