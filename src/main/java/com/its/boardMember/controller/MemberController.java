@@ -54,7 +54,7 @@ public class MemberController {
         }
     }
 
-    @GetMapping("findAll") //회원정보
+    @GetMapping("findAll") //회원정보 Model 역할: 리턴한 정보를 리턴할 페이지로 넘길수 있다.
     public String findAll(Model model){
         List<MemberDTO> memberDTOList = memberService.findAll();
         model.addAttribute("memberList",memberDTOList);
