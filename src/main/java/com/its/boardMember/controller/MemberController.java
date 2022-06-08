@@ -55,7 +55,7 @@ public class MemberController {
     }
 
 
-    @GetMapping("findAll") //회원정보 Model 역할: 리턴한 정보를 리턴할 페이지로 넘길수 있다.
+    @GetMapping("findAll") //관리자용 회원정보 Model 역할: 리턴한 정보를 리턴할 페이지로 넘길수 있다.
     public String findAll(Model model){
         List<MemberDTO> memberDTOList = memberService.findAll();
         model.addAttribute("memberList",memberDTOList);
@@ -81,13 +81,20 @@ public class MemberController {
 
 
     @GetMapping("/delete") // 회원삭제
-    public String delete(@RequestParam("id") Long id) {
+    public String delete(@RequestParam("id") Long id, HttpSession session) {
         System.out.println("id = " + id);
         boolean deleteResult = memberService.delete(id);
+        String loginId = (String) session.getAttribute("loginId"); // 관리자가 삭제했을때 로그아웃 처리 안되게 하는 문법
         if (deleteResult) {
-            return "redirect:/member/findAll";
+            if (loginId.equals("admin")) { // admin 일때 로그아웃이 안되고
+                return "/memberPages/list";
+            } else {
+                session.removeAttribute("loginId");
+                //removeAttribute 기능: 로그아웃 하는기능 admin 아니고 개인 회원일때 로그아웃이 되어버린다.
+                return "index";
+            }
         } else {
-            return "delete-fail";
+            return "delete-fail"; // 삭제 실패 했을때 이동하는 페이지
         }
     }
 //    @GetMapping("/delete")

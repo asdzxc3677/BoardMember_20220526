@@ -36,7 +36,7 @@
             <th>작성시간</th>
             <th>조회수</th>
         </tr>
-        <c:forEach items="${boardList}" var="board">
+        <c:forEach items="${boardList}" var="board"> <%-- 글번호,글제목,작성자,작성날짜,조회수 등등 DTO필드 하나씩 띄우는 추력해주는 작업  --%>
             <tr>
                 <td>${board.id}</td>
                 <td>${board.boardWriter}</td>
@@ -48,7 +48,7 @@
         </c:forEach>
     </table>
 </div>
-<div class="container">
+<div class="container"> <%-- 페지징 처리하는 작업 문법 --%>
     <ul class="pagination justify-content-center">
         <c:choose>
             <%-- 현재페이지가 1페이지면 이전 글자만 보여줌 --%>

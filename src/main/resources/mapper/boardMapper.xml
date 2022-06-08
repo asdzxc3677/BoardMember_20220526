@@ -12,6 +12,10 @@
                 #{boardContents}, now(), #{boardFileName})
     </insert>
 
+    <select id="findAll" resultType="board">
+        select * from board_table order by id desc
+    </select>
+
     <select id="pagingList" parameterType="java.util.HashMap" resultType="board">
         select * from board_tab order by id desc limit #{start}, #{limit}
     </select>
@@ -34,9 +38,6 @@
         delete from board_tab where id=#{id}
     </delete>
 
-    <select id="findAll" resultType="board">
-        select * from board_table order by id desc
-    </select>
 
     <update id="update" parameterType="board">
         update board_tab set boardTitle=#{boardTitle},boardContents=#{boardContents} where id=#{id}

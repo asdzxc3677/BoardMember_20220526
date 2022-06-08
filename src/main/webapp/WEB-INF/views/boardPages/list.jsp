@@ -28,6 +28,7 @@
         <th>작성시간</th> <%--(fmt적용) --%>
         <th>조회수</th>
     </tr>
+    </tr>
     <c:forEach items="${boardList}" var="board">
         <tr>
             <td>${board.id}</td>

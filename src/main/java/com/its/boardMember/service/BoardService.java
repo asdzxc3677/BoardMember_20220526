@@ -33,6 +33,10 @@ public class BoardService {
         boardRepository.saveFile(boardDTO);
     }
 
+    public List<BoardDTO> findAll() { // 원래 계획에 없던 목록처리 추가됨..!
+        return boardRepository.findAll();
+    }
+
     private static final int PAGE_LIMIT = 8; // 한 페이지에 보여줄 글 갯수
     private static final int BLOCK_LIMIT = 10; // 보여줄 필요 페이지 수
 
@@ -71,9 +75,6 @@ public class BoardService {
         boardRepository.delete(id);
     }
 
-    public List<BoardDTO> findAll() { // 원래 계획에 없던 목록처리 추가됨..!
-        return boardRepository.findAll();
-    }
 
     public void update(BoardDTO boardDTO) {
         boardRepository.update(boardDTO);

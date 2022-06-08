@@ -36,7 +36,7 @@
                 <td>${member.memberAge}</td>
                 <td>${member.memberPhone}</td>
                 <td><button class="btn btn-outline-info" onclick="update()">정보수정</button></td>
-                <td><a href="/member/delete?id=${member.id}">탈퇴</a></td>
+                <td><button class="btn btn-primary" id="delete" onclick="deleteMember()">탈퇴</button></td>
                     <%-- 클릭한 회원의 정보를 DB에서 가져와서 detail.jsp에 출력 --%>
             </tr>
     </table>
@@ -49,6 +49,16 @@
 <script>
     function update() {
         location.href="/member/update-form";
+    }
+    function deleteMember() {
+        let result = confirm("회원탈퇴?")
+        const memberId = "${member.id}";
+        if(result){
+        location.href="/member/delete?id=" + memberId;
+            alert("끄지라")
+        }else {
+            alert("어딜도망가려고")
+        }
     }
 </script>
 </html>

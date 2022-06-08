@@ -30,7 +30,15 @@
                 <c:if test="${sessionScope.loginId ==null}">
                 <button type="button" class="btn btn-outline-light me-2" onclick="login()">Login</button>
                 </c:if>
+
+                <c:choose> <%-- 로그인 안되있으면 로그아웃 버튼이 안보이게 처리 로그인 되어있으면 로그아웃 버튼 보이게 문법을 작성하였다. --%>
+                    <c:when test="${sessionScope.loginId != null}">
                 <button type="button" class="btn btn-warning" onclick="logout()">로그아웃</button>
+                    </c:when>
+                    <c:otherwise>
+
+                    </c:otherwise>
+                </c:choose>
 
                 <c:if test="${sessionScope.loginId == 'admin'}">  <%-- 관리자만 보일수 있게 하는 문법이다. --%>
                 <button type="button" class="btn btn-warning" onclick="memberList()">회원신상정보</button>

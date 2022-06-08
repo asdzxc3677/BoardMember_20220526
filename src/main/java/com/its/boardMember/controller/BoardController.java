@@ -28,7 +28,7 @@ public class BoardController {
     }
 
     @PostMapping("/saveFile")//파일첨부 글작성 처리
-    public String saveFile(@ModelAttribute BoardDTO boardDTO) throws IOException{
+    public String saveFile(@ModelAttribute BoardDTO boardDTO) throws IOException{ //throws IOException 파일 예외처리 막아주는 문법
         boardService.saveFile(boardDTO);
         return "redirect:/board/paging";
     }
