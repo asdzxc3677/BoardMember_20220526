@@ -40,7 +40,7 @@ public class BoardService {
     private static final int PAGE_LIMIT = 8; // 한 페이지에 보여줄 글 갯수
     private static final int BLOCK_LIMIT = 10; // 보여줄 필요 페이지 수
 
-    public List<BoardDTO> pagingList(int page) {
+    public List<BoardDTO> pagingList(int page) { // 글목록을(페이징리스트) db로부터 가져오는 부분이다.
         int pagingStart = (page-1) * PAGE_LIMIT;
         Map<String, Integer> pagingParam = new HashMap<>();
         pagingParam.put("start", pagingStart);
@@ -49,7 +49,7 @@ public class BoardService {
         return pagingList;
     }
 
-    public PageDTO paging(int page) {
+    public PageDTO paging(int page) { // 전체 페이지수 및 페이지번호 처리부분 이다.
         int boardCount = boardRepository.boardCount();
         int maxPage = (int)(Math.ceil((double)boardCount / PAGE_LIMIT));
         int startPage = (((int)(Math.ceil((double)page / BLOCK_LIMIT))) - 1) * BLOCK_LIMIT + 1;
@@ -73,7 +73,7 @@ public class BoardService {
 
     public void delete(Long id) {
         boardRepository.delete(id);
-    }
+    } //삭제처리
 
 
     public void update(BoardDTO boardDTO) {

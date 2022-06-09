@@ -29,7 +29,7 @@
         if(passwordConfirm == passwordDB){
             updateForm.submit();
         }else{
-            alert("비번이 틀리다우!")
+            alert("비번이 틀립니다.")
         }
     }
 </script>

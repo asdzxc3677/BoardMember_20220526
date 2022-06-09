@@ -88,7 +88,7 @@ public class BoardController {
         return "redirect:/board/detail?id=" + boardDTO.getId(); 
     }
 
-    @GetMapping("/search")
+    @GetMapping("/search") // 검색처리
     public String search(@RequestParam("searchType") String searchType,
                          @RequestParam("q") String q, Model model){
         List<BoardDTO> searchList = boardService.search(searchType, q);
